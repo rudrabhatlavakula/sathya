@@ -1,0 +1,139 @@
+package mypackages;
+import java.awt.Robot;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
+public class FileUpload {
+static WebElement element3;
+	public static void main(String[] args)throws Exception {
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		WebDriver driver = new ChromeDriver(options);
+	
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 driver.get("https://images.google.com");
+		 Thread.sleep(8000);
+		 
+		 WebElement element1 = driver.findElement(By.xpath("//*[@id='qbi']"));
+		 element1.click();
+		 Thread.sleep(3000);
+			
+		 WebElement element2 = driver.findElement(By.xpath("//*[@id='qbug']/div/a"));
+		 element2.click();
+		 Thread.sleep(3000);
+		 
+		 WebElement element3 = driver.findElement(By.xpath("//*[@id='qbfile']"));
+		 element3.click();
+		
+		 System.out.println("clicked");
+		
+		Robot robot = new Robot();
+		 
+		 String sFileName = "test.jpg";
+		 type(robot, sFileName);
+	
+		 robot.keyPress(KeyEvent.VK_ENTER);
+		  
+		 robot.keyRelease(KeyEvent.VK_ENTER);
+		 
+		
+	}
+		 
+		 
+		 
+		
+	public static void type(Robot robot, String FileName) throws Exception{
+		
+		 Thread.sleep(3000);
+		
+		 
+		 robot.keyPress(KeyEvent.VK_C);
+			robot.keyRelease(KeyEvent.VK_C);
+			
+			robot.keyPress(KeyEvent.VK_ALT);
+			robot.delay(20);
+			robot.keyPress(KeyEvent.VK_NUMPAD5);
+			robot.keyRelease(KeyEvent.VK_NUMPAD5);
+			robot.delay(20);
+			robot.keyPress(KeyEvent.VK_NUMPAD8);
+			robot.keyRelease(KeyEvent.VK_NUMPAD8);
+			robot.delay(20);
+			robot.keyRelease(KeyEvent.VK_ALT);
+			robot.delay(20);
+			
+			 robot.keyPress(KeyEvent.VK_BACK_SLASH);
+			    robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+			    
+			    //robot.keyPress(KeyEvent.VK_BACK_SLASH);
+			    //robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+			    
+			    
+			    robot.keyPress(KeyEvent.VK_D);
+			    robot.keyRelease(KeyEvent.VK_D);
+			    
+			    robot.keyPress(KeyEvent.VK_U);
+			    robot.keyRelease(KeyEvent.VK_U);
+			    
+			    robot.keyPress(KeyEvent.VK_M);
+			    robot.keyRelease(KeyEvent.VK_M);
+			    
+			    robot.keyPress(KeyEvent.VK_BACK_SLASH);
+			    robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+			    
+			    //robot.keyPress(KeyEvent.VK_BACK_SLASH);
+			    //robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+			    
+
+			
+			
+		 
+		robot.keyPress(KeyEvent.VK_T);
+		 
+		robot.keyRelease(KeyEvent.VK_T);
+		 
+		robot.keyPress(KeyEvent.VK_E);
+		 
+		robot.keyRelease(KeyEvent.VK_E);
+		 
+		robot.keyPress(KeyEvent.VK_S);
+		 
+		robot.keyRelease(KeyEvent.VK_S);
+		 
+		robot.keyPress(KeyEvent.VK_T);
+		 
+		robot.keyRelease(KeyEvent.VK_T);
+		
+		robot.keyPress(KeyEvent.VK_PERIOD);
+		robot.keyRelease(KeyEvent.VK_PERIOD);
+		
+		robot.keyPress(KeyEvent.VK_J);
+		robot.keyRelease(KeyEvent.VK_J);
+		
+		robot.keyPress(KeyEvent.VK_P);
+		robot.keyRelease(KeyEvent.VK_P);
+		
+		robot.keyPress(KeyEvent.VK_G);
+		robot.keyRelease(KeyEvent.VK_G);
+		
+		
+		
+		
+		
+		
+		Thread.sleep(3000);
+		
+	
+		
+		}
+}

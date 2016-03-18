@@ -1,0 +1,209 @@
+package mypackage1;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.By;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.FileInputStream;
+
+import jxl.*;
+import jxl.read.biff.BiffException;
+
+import org.openqa.selenium.interactions.Actions;
+//import jxl.Sheet;
+
+
+
+//import java.util.list;
+public class Flipkart
+				//static FileInputStream fs;
+	{
+
+		static FileInputStream fs;
+		static WebDriver driver;
+		static ChromeOptions options;
+		
+		Flipkart()
+		{
+			ChromeOptions options = new ChromeOptions();
+			driver=new ChromeDriver(options);
+		}
+	public static void main(String[] args) throws IOException,Exception {
+		
+		
+		
+		 Login();
+		 searchInput();
+		 
+		 //driver.close();
+		 
+		 
+	}
+	
+	public static void Login() throws Exception
+	{
+		
+ChromeOptions options = new ChromeOptions();
+		
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		WebDriver driver = new ChromeDriver(options);
+		Actions builder = new Actions(driver);
+		//Actions action = null;
+		 driver.get("http://www.flipkart.com");
+		 Thread.sleep(8000);
+		WebElement element1 = driver.findElement(By.xpath("//*[@id='container']/div/div/header/div[2]/div/div[1]/ul/li[8]/a"));
+		element1.click();
+		Thread.sleep(8000);
+		System.out.println("userid");
+		WebElement element2 = driver.findElement(By.xpath("//*[@id='fk-mainbody-id']/div/div/div[1]/div/div[4]/div[2]/input"));
+		element2.sendKeys("sathyaprabha481@gmail.com");
+		
+		System.out.println("password");
+		WebElement element3 = driver.findElement(By.xpath("//*[@id='fk-mainbody-id']/div/div/div[1]/div/div[4]/div[4]/input"));
+		element3.sendKeys("Honeykannama@1");
+		Thread.sleep(10000);
+		
+		System.out.println("click");
+		WebElement element4 = driver.findElement(By.xpath("//*[@id='fk-mainbody-id']/div/div/div[1]/div/div[4]/div[7]/input"));
+		element4.click();
+		Thread.sleep(10000);
+		
+		WebElement element5 = driver.findElement(By.xpath("//*[@id='container']/div/div/header/div[2]/div/div[1]/ul/li[7]/a/span[2]"));
+		//((Actions) element5).clickAndHold();
+		builder.moveToElement(element5).build().perform();
+		
+		
+		
+		WebElement element6 = driver.findElement(By.xpath("//*[@id='container']/div/div/header/div[2]/div/div[1]/ul/li[7]/ul/li[10]/a"));
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.sendKeys(Keys.DOWN);
+		element6.click();
+		Thread.sleep(6000);
+
+	}
+	
+	
+	
+	
+	public static void searchInput() throws Exception
+	{
+	
+		 
+		 
+		String FilePath = "d://input.xls";
+		System.out.println("Success");
+		 FileInputStream fs = new FileInputStream(FilePath);
+		 System.out.println("opened");
+		Workbook wb = Workbook.getWorkbook(fs);
+		Sheet sh = wb.getSheet("Sheet1");
+		System.out.println("Sheet");
+		int columns = sh.getColumns();
+		System.out.println(columns);
+		int rows = sh.getRows();
+		System.out.println(rows);
+		
+		
+		for(int col = 0;col<columns;col++)
+		{  	
+			
+			
+			for(int row = 0;row < rows; row++)
+			{ 
+				
+				Cell data=sh.getCell(col,row);
+				System.out.println(data.getContents());
+				Thread.sleep(3000);
+				
+				
+				WebElement element = driver.findElement(By.xpath("//*[@id='container']/div/div/header/div[2]/div/div[2]/div/form/div/input"));
+				 element.sendKeys(data.getContents());
+				
+			
+				 WebElement element1 = driver.findElement(By.xpath("//*[@id='container']/div/div/header/div[2]/div/div[2]/div/form/input[1]"));
+				 element1.click();
+				 Thread.sleep(8000);
+				 
+				 
+				 
+				 /*WebElement element2 = driver.findElement(By.xpath("//*[@id='discount_range']/li[6]/a/input"));
+				 element2.click();
+				 Thread.sleep(8000);
+				 
+				 WebElement element3 = driver.findElement(By.xpath("//*[@id='capacity']/li[3]/a/input"));
+				 element3.click();
+				
+				 Thread.sleep(8000);
+				 
+				WebElement element4 = driver.findElement(By.xpath("//*[@id='price_range']/li[2]/a/input"));
+				element4.click();
+				Thread.sleep(8000);*/
+				
+				 JavascriptExecutor jse = (JavascriptExecutor) driver;
+				 // int count = 1500;
+				  while (true) 
+				  {
+					  //!driver.findElement(By.xpath("//*[@id='show-more-results']")).isDisplayed()
+					   //count = count + 500;
+					  // jse.executeScript("scroll(0, " + count + ")");
+					  jse.executeScript("window.scrollBy(0,1050)");
+					  System.out.println("scroll done starts");
+					   try {
+					    Thread.sleep(500);
+					   } catch (InterruptedException e) {
+					    
+					    e.printStackTrace();
+					   }
+					   WebElement element100 = driver.findElement(By.xpath("//*[@id='show-more-results']"));
+					   driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+					   if (element100.isDisplayed()) {
+						   System.out.println("action starts");
+						   Actions action = new Actions(driver);
+						  
+						   action.moveToElement(element100).build().perform();
+						   Thread.sleep(2000);
+						   element100.click();
+						   System.out.println("more option clicked");
+						   Thread.sleep(4000);
+					  }
+					  
+					
+						  if (driver.findElement(By.xpath("//*[@id='no-more-results']")).isDisplayed())
+						  {
+							  System.out.println("No More Option");
+						   driver.navigate().back();
+						   System.out.println("navigation back clcked");
+						   Thread.sleep(3000);
+						   
+						   
+						   break;
+						  	}
+					
+					   
+				 }
+
+			
+			}
+		}
+			
+		 	
+			}
+	
+	
+	}
+
