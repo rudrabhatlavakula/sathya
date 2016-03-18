@@ -1,0 +1,36 @@
+package packages;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.JavascriptExecutor;
+
+public class AjaxApp {
+
+	public static void main(String[] args) throws Exception{
+
+		ChromeOptions options = new ChromeOptions();
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		WebDriver driver = new ChromeDriver(options);
+
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 driver.get("http://maps.google.com/");
+		 Thread.sleep(8000);
+		 
+		 WebElement element1 = driver.findElement(By.xpath("//*[@id='searchboxinput']"));
+		 element1.sendKeys("Tambaram to Egmore");
+		 
+		 WebElement element2 = driver.findElement(By.xpath("//*[@id='searchbox']/div[1]/button"));
+		 element2.click();
+		 Thread.sleep(8000);
+	
+		 JavascriptExecutor jse = (JavascriptExecutor) driver;
+		 jse.executeScript("window.scrollTo(0,document.body.scrollHeight);");
+	}
+
+}
