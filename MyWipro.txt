@@ -1,0 +1,199 @@
+package mypackage1;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class MyWipro {
+
+	public static void main(String[] args) throws Exception {
+		ChromeOptions options = new ChromeOptions();
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		options.addArguments("--test-type");
+		WebDriver driver = new ChromeDriver(options);
+		
+
+		 driver.get("http://mywipro.wipro.com");
+		// driver.manage().window().maximize();
+		 options.addArguments("--start-maximized");
+		 
+		 WebElement element = driver.findElement(By.xpath("//*[@id='logonuidfield']"));
+		 element.sendKeys("sa256615");
+		 
+		 WebElement element1 = driver.findElement(By.xpath("//*[@id='logonpassfield']"));
+		 element1.sendKeys("Bujju.0110");
+		
+		WebElement element2 = driver.findElement(By.xpath("//*[@id='logonForm']/div[2]/input"));
+		
+		element2.click();
+		Thread.sleep(8000);
+		
+		WebElement element3 = driver.findElement(By.className("appstore_btn"));
+	     element3.click();
+		Thread.sleep(16000);
+				
+	
+		WebElement element4 = driver.findElement(By.xpath("//*[@id='MYTIME_ANCHR']/div/span/p"));
+		element4.click();
+		Thread.sleep(16000);
+		
+		
+	
+		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+		 int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
+		 int varble = currentDayOfWeek;
+		 System.out.println("Current Day of Week: " + currentDayOfWeek);
+		 
+			
+		if (varble ==1)
+		{
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+			WebElement element7 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[2]/li[3]/div[1]/ul/button"));
+			element7.click();
+			
+			
+		}
+		
+		else if (varble ==2)
+		{
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+			WebElement element8 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[1]/li[1]/div[1]/ul/button"));
+			element8.click();
+			
+			Thread.sleep(3000);
+			WebElement element121 = driver.findElement(By.xpath("(//*[@id='tms'])[1]"));
+			element121.click();
+			Thread.sleep(8000);
+	
+
+			WebElement element122=driver.findElement(By.xpath("//*[@id='0_0_8_0']"));
+			element122.sendKeys("8.75");
+			
+			WebElement element123 =driver.findElement (By.xpath("//*[@id='btnTMSSubmit']"));
+			element123.click();
+			
+			driver.navigate().back();
+			
+		}
+		
+		else if (varble ==3)
+		{
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+			WebElement element9 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[1]/li[2]/div[1]/ul/button"));
+			element9.click();
+			
+			Thread.sleep(3000);
+			WebElement element121 = driver.findElement(By.xpath("(//*[@id='tms'])[2]"));
+			element121.click();
+			Thread.sleep(8000);
+	
+
+			WebElement element122=driver.findElement(By.xpath("//*[@id='1_0_8_0']"));
+			element122.sendKeys("8.75");
+			
+			WebElement element123 =driver.findElement (By.xpath("//*[@id='btnTMSSubmit']"));
+			element123.click();
+			
+			driver.navigate().back();
+		}
+		
+		else if (varble == 4)
+		{
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+			WebElement element10 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[1]/li[3]/div[1]/ul/button"));
+			element10.click();
+			
+			Thread.sleep(3000);
+			WebElement element121 = driver.findElement(By.xpath("(//*[@id='tms'])[3]"));
+			element121.click();
+			Thread.sleep(8000);
+	
+
+			WebElement element122=driver.findElement(By.xpath("//*[@id='2_0_8_0']"));
+			element122.sendKeys("8.75");
+			
+			WebElement element123 =driver.findElement (By.xpath("//*[@id='btnTMSSubmit']"));
+			element123.click();
+			
+			driver.navigate().back();
+			Thread.sleep(6000);
+		}
+		
+		 else if (varble == 5){
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+			WebElement element11 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[1]/li[4]/div[1]/ul/button"));
+			element11.click();
+		
+		
+			 
+			 Thread.sleep(3000);
+			WebElement element111 = driver.findElement(By.xpath("(//*[@id='tms'])[4]"));
+			element111.click();
+			Thread.sleep(8000);
+			
+			WebElement element112=driver.findElement(By.xpath("//*[@id='3_0_7_0']"));
+			element112.sendKeys("8.75");
+			driver.navigate().back();
+			Thread.sleep(6000);
+			
+		 }
+			else if (varble == 6)
+				
+			{
+				driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+				WebElement element12 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[2]/li[1]/div[1]/ul/button"));
+				element12.click();	
+				
+				 Thread.sleep(3000);
+					WebElement element121 = driver.findElement(By.xpath("(//*[@id='tms'])[5]"));
+					element121.click();
+					Thread.sleep(8000);
+			
+					WebElement element122=driver.findElement(By.xpath("//*[@id='4_0_8_0']"));
+					element122.sendKeys("8.75");
+					
+					WebElement element123 =driver.findElement (By.xpath("//*[@id='btnTMSSubmit']"));
+					element123.click();
+					
+					driver.navigate().back();
+					Thread.sleep(6000);
+			}
+			else
+			{
+				driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+				WebElement element13 = driver.findElement(By.xpath("//*[@id='homePageDayList']/ul[2]/li[2]/div[1]/ul/button"));
+				element13.click();
+			}
+		
+		
+		WebElement element14 = driver.findElement(By.xpath("//*[@id='search_input']"));
+
+		element14.sendKeys("myfinancials");
+		
+		WebElement element15 =  driver.findElement(By.xpath("//*[@id='search_btn']"));
+		element15.click();
+		Thread.sleep(6000);
+		
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
+		WebElement element20 = driver.findElement(By.xpath("//*[@id='fin_loans']"));
+		element20.click();	
+		Thread.sleep(6000);
+		
+	WebElement element21 = driver.findElement(By.className("ViewLINK"));
+	element21.click();
+	Thread.sleep(2000);
+	driver.navigate().back();
+	Thread.sleep(2000);
+	WebElement element22 = driver.findElement(By.xpath("//*[@id='headr_area']/article/span[1]"));
+	element22.click();
+		
+	}
+
+}
