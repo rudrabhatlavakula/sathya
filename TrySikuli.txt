@@ -1,0 +1,27 @@
+package packages;
+
+
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.junit.Test;
+import org.sikuli.script.App;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
+public class TrySikuli {
+
+	public static void main(String[] args) throws FindFailed {
+		ChromeOptions options = new ChromeOptions();
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		WebDriver driver = new ChromeDriver(options);
+		driver.get("http://www.google.com");
+		Screen screen = new Screen();
+		Pattern image = new Pattern("C:\\dum\\test.jpg");
+		screen.wait(image, 10);
+		screen.click(image);
+	}
+
+}

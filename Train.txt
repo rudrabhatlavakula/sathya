@@ -1,0 +1,73 @@
+package mypackage1;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+public class Train {
+	static WebDriver driver;
+	static ChromeOptions options;
+	Train()
+	{
+		ChromeOptions options = new ChromeOptions();
+		driver=new ChromeDriver(options);
+	}
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://irctceasybook.com");
+		WebElement element1 = driver.findElement(By.xpath("//*[@id='j_username']"));
+		element1.sendKeys("msathyac");
+		WebElement element2 = driver.findElement (By.xpath("//*[@id='j_password']"));
+		element2.sendKeys("msathyac");
+		WebElement element3 = driver.findElement (By.xpath("//*[@id='stationFrom']"));
+		element3.sendKeys("TAMBARAM");
+		WebElement element4 = driver.findElement (By.xpath("//*[@id='stationTo']"));
+		element4.sendKeys("SIVAKASI");
+		
+		//Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+		//Date dNow = new Date( );
+	    // System.out.println("DATE " + dNow);
+		 
+		WebElement element5 = driver.findElement (By.xpath("//*[@id='JDatee']"));
+		element5.sendKeys();
+		System.out.println("Crossed");
+		//WebElement element0 = driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/div/div"));
+		
+		WebElement element01= driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[4]/a"));
+		element01.click();
+	element01.getAttribute("value");
+	System.out.println("The element01 is" + element01.getAttribute("value"));
+			
+		//WebElement element55 = driver.findElement (By.className("ui-state-default ui-state-highlight ui-state-active ui-state-hover"));
+		//WebElement element55=driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[4]/td[3]/a"));
+		//element55.getAttribute("value");
+		//System.out.println("DATEEE" + element55.getAttribute("value"));
+		WebElement element6 = driver.findElement (By.xpath("//*[@id='txttrainNo']"));
+		element6.sendKeys("12661");
+		WebElement element7 = driver.findElement (By.xpath("//*[@id='boardingStation']"));
+		element7.sendKeys("TAMBARAM");
+		WebElement element8 = driver.findElement (By.xpath("//*[@id='PassemgerOne']"));
+		element8.sendKeys("Sathya Prabha M");
+		WebElement element9 = driver.findElement (By.xpath("//*[@id='passenger0']/td[2]/input"));
+		element9.sendKeys("24");
+		WebElement element10 = driver.findElement (By.xpath("//*[@id='passenger0']/td[3]/select"));
+		element10.sendKeys(Keys.DOWN);
+		element10.sendKeys(Keys.DOWN);
+		WebElement element11 = driver.findElement (By.xpath("//*[@id='MobileNumber']/tbody/tr/td/input"));
+		element11.sendKeys("9787711090");
+		WebElement element12 = driver.findElement (By.xpath("//*[@id='PaymentOptionPop']/img"));
+		element12.click();
+		
+	}
+
+}

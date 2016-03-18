@@ -1,0 +1,223 @@
+package packages;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
+import org.sikuli.api.ImageTarget;
+import org.sikuli.api.Target;
+import org.sikuli.api.DesktopScreenRegion;
+import org.sikuli.api.ScreenRegion;
+import org.sikuli.api.visual.DesktopCanvas;
+import org.sikuli.api.visual.Canvas;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.sikuli.api.robot.Mouse;
+import org.sikuli.api.robot.desktop.DesktopMouse;
+
+
+
+public class Ajaxapp12 {	
+
+	public static void main(String[] args) throws Exception{
+
+		ChromeOptions options = new ChromeOptions();
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		options.addArguments("--test-type");
+		options.addArguments("--start-maximized");
+		WebDriver driver = new ChromeDriver(options);
+		
+		ScreenRegion sr = new DesktopScreenRegion();
+		Canvas canvas =  new DesktopCanvas();
+		Target target;
+
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 driver.get("http://maps.google.com/");
+		 Thread.sleep(8000);
+		 
+		 WebElement element1 = driver.findElement(By.xpath("//*[@id='searchboxinput']"));
+		 element1.sendKeys("Tambaram to Egmore");
+		 
+		 Robot robot = new Robot();
+		 robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			waitForPageLoaded(driver);
+		 
+		
+		 Thread.sleep(16000);
+		 System.out.println("Searched");
+
+		 robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(10000);
+		// WebElement element22 = driver.findElement(By.xpath("//*[@id='scene']/div[3]/div[1]/div/canvas"));
+	//element22.sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));
+	// Thread.sleep(8000);
+		 
+		 
+		 target = new ImageTarget (new File ("D:/Sikuli/Satellite.PNG"));
+		 ScreenRegion search = sr.wait (target,80000);
+		 Thread.sleep(2000);
+		 canvas.addBox(search);
+		 canvas.addLabel(search,"Satellite");
+		 canvas.display(1);
+		 waitForPageLoaded(driver);
+		 if (search == null)
+		 {
+			 System.out.println("Not Found");
+		 }
+		 
+		 else
+			 
+		 {
+			 Mouse mouse = new DesktopMouse();
+			
+			 mouse.click(search.getCenter());
+			 System.out.println("Satellite clicked");
+			 Thread.sleep(10000);
+			 waitForPageLoaded(driver);
+		 }
+		 
+		 
+		
+		 
+		// WebElement element11 = driver.findElement(By.xpath("//*[@id='searchboxinput']"));
+		// element11.click();
+		// robot.keyPress(KeyEvent.VK_ENTER);
+		//	robot.keyRelease(KeyEvent.VK_ENTER);
+			////waitForPageLoaded(driver);
+			//Thread.sleep(10000);
+			//System.out.println("Entered");
+			
+					
+			target = new ImageTarget (new File ("D:/Sikuli/Street.PNG"));
+			 ScreenRegion searches = sr.wait (target,80000);
+			 canvas.addBox(searches);
+			 canvas.addLabel(searches,"Street");
+			 canvas.display(1);
+				System.out.println("Clicked");
+			 if (searches == null)
+			 {
+				 System.out.println("Not Found");
+			 }
+			 
+			 else
+				 
+			 {
+				 Mouse mouse = new DesktopMouse();
+				 mouse.click(searches.getCenter());
+				 Thread.sleep(10000);
+				 
+			 }
+			
+			 //driver.navigate().back();
+			 //driver.navigate().back();
+			 
+			// WebElement element111 = driver.findElement(By.xpath("//*[@id='searchboxinput']"));
+			// element111.sendKeys("Tambaram to Medavakam");
+			 
+			
+			// robot.keyPress(KeyEvent.VK_ENTER);
+			//	robot.keyRelease(KeyEvent.VK_ENTER);
+				
+				//waitForPageLoaded(driver);
+			//	Thread.sleep(10000);
+			
+			WebElement element3 = driver.findElement(By.xpath("//*[@id='pane']/div[2]/div[1]/div/div[2]/span/div/div/div/div[2]"));
+			element3.click();
+			Thread.sleep(2000);
+			//element3.sendKeys(Keys.DOWN);
+			robot.keyPress(KeyEvent.VK_DOWN); 
+			robot.keyRelease(KeyEvent.VK_DOWN); 
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			//WebElement element33 = driver.findElement(By.xpath("//*[@id=':b']/div"));
+		//	element33.click();
+			
+			Thread.sleep(10000);
+		 WebElement element4 = driver.findElement(By.xpath("//*[@id='pane']/div[2]/div[1]/div/div[2]/button[3]"));
+			element4.click();
+			Thread.sleep(10000);
+			
+		WebElement element5 = driver.findElement(By.xpath("//*[@id='pane']/div[2]/div[1]/div/div[2]/div[2]/div/div[1]/div[2]/label[2]"));
+		element5.click();	
+		Thread.sleep(10000);
+		
+		 
+		 WebElement element6 = driver.findElement(By.xpath("//*[@id='pane']/div[2]/div[1]/div/div[2]/button[3]"));
+		element6.click();
+		 driver.navigate().back();
+		 Thread.sleep(11000);
+		 
+		 robot.keyPress(KeyEvent.VK_DOWN); 
+		 robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN); 
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+		// WebElement element333 = driver.findElement(By.xpath("//*[@id=':c']/div"));
+			//element333.click();
+			Thread.sleep(11000);
+		 
+		
+		 
+		 waitForPageLoaded(driver);
+		 
+		 WebElement element8 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[2]/div[2]/button"));
+			element8.click();
+			Thread.sleep(10000);
+			 waitForPageLoaded(driver);
+		 
+			WebElement element9 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[1]/div/div/div[1]/div[2]/button"));
+			element9.click();	
+			Thread.sleep(10000);
+			 waitForPageLoaded(driver);
+			
+			WebElement element10 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[1]/div/div/div[1]/div[3]/button"));
+			element10.click();	
+			Thread.sleep(10000);
+			
+			 waitForPageLoaded(driver);
+			WebElement element11 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[1]/div/div/div[1]/div[4]/button"));
+			element11.click();	
+			Thread.sleep(10000);
+			 waitForPageLoaded(driver);
+			 
+				WebElement element12 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[1]/div/div/div[2]/div[1]/div[1]/button"));
+				element12.click();	
+				Thread.sleep(10000);
+				System.out.println("Walking");
+				 waitForPageLoaded(driver);
+		 
+					WebElement element13 = driver.findElement(By.xpath("//*[@id='omnibox']/div[1]/div[3]/div/div[1]/div/div/div[2]/div[1]/div[2]/button"));
+					element13.click();	
+					Thread.sleep(6000);
+					 waitForPageLoaded(driver);
+				 
+	}
+	public static void waitForPageLoaded(WebDriver driver) {
+
+        ExpectedCondition<Boolean> expectation = 
+        		new
+        		ExpectedCondition<Boolean>() {
+           public Boolean apply(WebDriver driver) {
+             return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+           }
+         };
+
+         WebDriverWait wait = new WebDriverWait(driver,30);
+         try {
+                 wait.until(expectation);
+         } catch(Throwable error) {
+                 Assert.assertFalse(true, "Timeout waiting for Page Load Request to complete.");
+         }
+    } 
+}

@@ -11,25 +11,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-
 public class MyWipro {
 
-	static WebDriver driver;
-	static ChromeOptions options;
-	MyWipro()
-	{
-		ChromeOptions options = new ChromeOptions();
-		driver=new ChromeDriver(options);
-	}
 	public static void main(String[] args) throws Exception {
-		//ChromeOptions options = new ChromeOptions();
-		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
-		//options.addArguments("--test-type");
-		
 		ChromeOptions options = new ChromeOptions();
-		driver=new ChromeDriver(options);
-		 driver.get("http://mywipro.wipro.com");
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		options.addArguments("--test-type");
+		WebDriver driver = new ChromeDriver(options);
 		
+
+		 driver.get("http://mywipro.wipro.com");
+		// driver.manage().window().maximize();
 		 options.addArguments("--start-maximized");
 		 
 		 WebElement element = driver.findElement(By.xpath("//*[@id='logonuidfield']"));
@@ -47,70 +39,13 @@ public class MyWipro {
 	     element3.click();
 		Thread.sleep(16000);
 				
-	searches();
 	
-	
-		//WebElement element4 = driver.findElement(By.xpath("//*[@id='MYTIME_ANCHR']/div/span/p"));
-		//element4.click();
-		//Thread.sleep(16000);
-		
-		
-		
-		
-	}
-	
-	public static void searches() throws Exception
-	{
-
-		WebElement element14 = driver.findElement(By.xpath("//*[@id='search_input']"));
-
-		element14.sendKeys();
-		Thread.sleep(5000);
-		try
-		{
-		System.out.println("************OUTPUT*********"+element14.getAttribute("value"));
-		}catch(Exception e)
-		{
-			
-		}
-String varble1 = element14.getAttribute("value");
-
-if (varble1.contains("mytime"))
-{
-	mytyme();
-	}
-	
-else if (varble1.contains("myfinancials"))
-	
-{
-myfinancials();	
-}
-	
-	
-		WebElement element15 =  driver.findElement(By.xpath("//*[@id='search_btn']"));
-		element15.click();
+		WebElement element4 = driver.findElement(By.xpath("//*[@id='MYTIME_ANCHR']/div/span/p"));
+		element4.click();
 		Thread.sleep(16000);
 		
 		
-		
-		
-	}
 	
-	public static void myfinancials() throws Exception
-	{
-		System.out.println("Success");
-		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='ivuFrm_page0ivu0']")));
-		WebElement element20 = driver.findElement(By.xpath("//*[@id='fin_loans']"));
-		element20.click();	
-		Thread.sleep(6000);
-		
-	WebElement element21 = driver.findElement(By.className("ViewLINK"));
-	element21.click();
-	}
-
-	public static void mytyme() throws Exception
-	{
-		
 		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
 		 int currentDayOfWeek = localCalendar.get(Calendar.DAY_OF_WEEK);
 		 int varble = currentDayOfWeek;
@@ -133,13 +68,13 @@ myfinancials();
 			element8.click();
 			
 			Thread.sleep(3000);
-			WebElement element88 = driver.findElement(By.xpath("(//*[@id='tms'])[1]"));
-			element88.click();
+			WebElement element121 = driver.findElement(By.xpath("(//*[@id='tms'])[1]"));
+			element121.click();
 			Thread.sleep(8000);
 	
 
-			WebElement element89=driver.findElement(By.xpath("//*[@id='0_0_8_0']"));
-			element89.sendKeys("8.75");
+			WebElement element122=driver.findElement(By.xpath("//*[@id='0_0_8_0']"));
+			element122.sendKeys("8.75");
 			
 			WebElement element123 =driver.findElement (By.xpath("//*[@id='btnTMSSubmit']"));
 			element123.click();
@@ -233,5 +168,14 @@ myfinancials();
 				element13.click();
 			}
 		
+		
+		WebElement element14 = driver.findElement(By.xpath("//*[@id='search_input']"));
+
+		element14.sendKeys("mytime");
+		
+		WebElement element15 =  driver.findElement(By.xpath("//*[@id='search_btn']"));
+		element15.click();
+		
 	}
+
 }

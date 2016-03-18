@@ -1,0 +1,39 @@
+package mypackage1;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement; 
+import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.By;
+
+public class Logout {
+
+	public static void main(String[] args) throws Exception {
+		ChromeOptions options = new ChromeOptions();
+		System.setProperty("webdriver.chrome.driver", "D:/chromedriver_win32/chromedriver.exe");
+		options.addArguments("--test-type");
+		WebDriver driver = new ChromeDriver(options);
+		
+
+		 driver.get("http://mywipro.wipro.com");
+		// driver.manage().window().maximize();
+		 options.addArguments("--start-maximized");
+		 
+		 WebElement element = driver.findElement(By.xpath("//*[@id='logonuidfield']"));
+		 element.sendKeys("sa256615");
+		 
+		 WebElement element1 = driver.findElement(By.xpath("//*[@id='logonpassfield']"));
+		 element1.sendKeys("Bujju.0110");
+		
+		WebElement element2 = driver.findElement(By.xpath("//*[@id='logonForm']/div[2]/input"));
+		
+		element2.click();
+		Thread.sleep(10000);
+		
+		WebElement element3 = driver.findElement(By.xpath("//*[@id='headr_area']/article/span[1]"));
+		element3.click();
+		
+		
+
+	}
+
+}
